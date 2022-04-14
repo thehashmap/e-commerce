@@ -11,7 +11,7 @@ import Sponsor from './components/Sponsors/Sponsor';
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 
 function App() {
-    const isSystemDark = window.matchMedia("(prefers-color-scheme: dark)").matches
+  const isSystemDark = window.matchMedia("(prefers-color-scheme: dark)").matches
   const [darkState, setDarkState] = useState(isSystemDark);
   const palletType = darkState ? "dark" : "light";
   const mainPrimaryColor = darkState ? '#ff9800' : '#3F51B5';
@@ -21,23 +21,16 @@ function App() {
     palette: {
       type: palletType,
       primary: {
-        main: mainPrimaryColor
+        main: mainPrimaryColor,
       },
       secondary: {
         main: mainSecondaryColor
       },
-    //   text: {
-    //       primary: mainTextColor
-    //   },
+      text: {
+          primary: mainTextColor
+      },
     }
   });
-  const handleThemeChange = () => {
-    setDarkState(!darkState);
-  };
-
-//   useEffect(() => {
-//     setDarkState(isSystemDark);
-//   },[window.matchMedia("(prefers-color-scheme: dark)").matches])
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />

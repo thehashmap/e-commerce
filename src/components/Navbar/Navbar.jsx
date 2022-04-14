@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AppBar, Toolbar, IconButton, Badge, Typography, Button, TextField } from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons';
-import logo from '../../../src/logo.svg';
+import logo from '../../../src/favicon.png';
 import useStyles from './styles';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -17,6 +17,7 @@ const Navbar = () => {
   const classes = useStyles();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [open, setOpen] = React.useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -27,8 +28,13 @@ const Navbar = () => {
     setIsLoggedIn(!isLoggedIn);
   };
 
+  useEffect(() => {
+      setTimeout(() => setIsVisible(true), 1000);
+  }, []);
+
   return (
     <>
+      <Slide direction="down" in={isVisible} mountOnEnter unmountOnExit>
       <AppBar initial="initial" position="fixed" className={classes.appBar} color="inherit">
         <Toolbar>
           <Typography variant="h6" className={classes.title} color="primary">
@@ -48,6 +54,7 @@ const Navbar = () => {
           </div>
         </Toolbar>
       </AppBar>
+      </Slide>
         <Dialog
             open={open}
             TransitionComponent={Transition}
@@ -59,6 +66,26 @@ const Navbar = () => {
             <DialogTitle>Login</DialogTitle>
             <DialogContent sx={{
                 '& .MuiTextField-root': { m: 1, },
+                '& label': {
+                    color: 'gray',
+                },
+                '& label.Mui-focused': {
+                color: '#ff9800',
+                },
+                '& .MuiInput-underline:after': {
+                borderBottomColor: '#ff9800',
+                },
+                '& .MuiOutlinedInput-root': {
+                '& fieldset': {
+                    borderColor: 'gray',
+                },
+                '&:hover fieldset': {
+                    borderColor: 'gray',
+                },
+                '&.Mui-focused fieldset': {
+                    borderColor: '#ff9800',
+                },
+                },
             }}>
                 <DialogContentText>
                     Welcome Back!
@@ -80,8 +107,8 @@ const Navbar = () => {
                 />
             </DialogContent>
             <DialogActions>
-            <Button onClick={handleClose}>Cancel</Button>
-            <Button onClick={handleClose}>Submit</Button>
+            <Button onClick={handleClose} color="primary">Cancel</Button>
+            <Button onClick={handleClose} color="primary">Submit</Button>
             </DialogActions>
         </Dialog>
     </>

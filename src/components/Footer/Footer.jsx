@@ -57,7 +57,7 @@ const Footer = () => {
                     <Container>
                     <Typography color="primary" variant="h6">SuperShop</Typography>
                     </Container>
-                    <Typography variant="p">
+                    <Typography variant="body1">
                         Your Everything Store
                     </Typography>
 

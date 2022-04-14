@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export default makeStyles(() => ({
+export default makeStyles((theme) => ({
   root: {
     // maxWidth: 345, original width style
     maxWidth: '100%',
@@ -38,6 +38,26 @@ export default makeStyles(() => ({
   input: {
       flex: 0.7,
       marginRight: 10,
+      '& label': {
+        color: 'primary',
+      },
+      '& label.Mui-focused': {
+        color: 'primary',
+      },
+      '& .MuiInput-underline:after': {
+        borderBottomColor: 'primary',
+      },
+      '& .MuiOutlinedInput-root': {
+        '& fieldset': {
+          borderColor: 'primary',
+        },
+        '&:hover fieldset': {
+          borderColor: 'primary',
+        },
+        '&.Mui-focused fieldset': {
+          borderColor: 'primary',
+        },
+      },
   },
   button: {
       flex: 0.3,
