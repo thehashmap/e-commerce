@@ -10,4 +10,18 @@ export default makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  title: {
+    flexGrow: 1,
+    alignItems: 'center',
+    display: 'flex',
+    textDecoration: 'none',
+    justifyContent: 'center',
+  },
+  show: {
+      flexGrow: 1,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      paddingBottom: theme.spacing(3),
+  },
 }));

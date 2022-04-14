@@ -11,10 +11,15 @@ export default makeStyles(() => ({
   },
   cardActions: {
     display: 'flex',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-around',
   },
   cardContent: {
     display: 'flex',
     justifyContent: 'space-between',
+  },
+  favorite: {
+    "&:hover": {
+        color: 'red',
+    }
   },
 }));
