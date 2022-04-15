@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } from '@material-ui/core';
-import Rating from '@mui/material/Rating';
+import { Rating, Tooltip } from '@mui/material';
 import { AddShoppingCart, FavoriteBorder } from '@material-ui/icons';
 
 import useStyles from './styles';
@@ -29,13 +29,19 @@ const Deal = ({ product }) => {
         <Typography variant="body2" color="textSecondary" component="p">{product.description}</Typography>
       </CardContent>
       <CardActions disableSpacing className={classes.cardActions}>
-        <Rating name="half-rating" defaultValue={product.rating} precision={0.5} />
-        <IconButton aria-label="Favorite" className={classes.favorite}>
-          <FavoriteBorder />
-        </IconButton>
-        <IconButton aria-label="Add to Cart">
-          <AddShoppingCart />
-        </IconButton>
+        <Tooltip title="Rate this item">
+            <Rating name="half-rating" defaultValue={product.rating} precision={0.5} />
+        </Tooltip>
+        <Tooltip title="Add to Wishlist">
+            <IconButton aria-label="Favorite" className={classes.favorite}>
+                <FavoriteBorder />
+            </IconButton>
+        </Tooltip>
+        <Tooltip title="Add to Cart">
+            <IconButton aria-label="Add to Cart">
+            <AddShoppingCart />
+            </IconButton>
+        </Tooltip>
       </CardActions>
     </Card>
   );

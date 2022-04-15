@@ -5,8 +5,7 @@ import {
     Pinterest,
     Twitter,
 } from "@material-ui/icons";
-import { Stack, Paper } from "@mui/material";
-import { styled } from '@mui/material/styles';
+import { Stack, Tooltip } from "@mui/material";
   
 import useStyles from './styles';
 
@@ -44,10 +43,10 @@ const Footer = () => {
         },
     ];
     const socialLinks = [
-        <Facebook />,
-        <Instagram />,
-        <Twitter />,
-        <Pinterest />,
+        {link: <Facebook />, name: 'Facebook handle'},
+        {link: <Instagram />, name: 'Instagram handle'},
+        {link: <Twitter />, name: 'Twitter handle'},
+        {link: <Pinterest />, name: 'Pinterest handle'},
     ];
 
     return (
@@ -63,9 +62,11 @@ const Footer = () => {
 
                     <Stack direction="row" spacing={7} className={classes.icons}>
                     {socialLinks.map((link, index) => (
-                        <IconButton key={index} color="primary">
-                            {link}
-                        </IconButton>
+                        <Tooltip title={link.name}>
+                            <IconButton key={index} color="primary">
+                                {link.link}
+                            </IconButton>
+                        </Tooltip>
                     ))}
                     </Stack>
                 </Grid>

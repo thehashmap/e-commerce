@@ -3,12 +3,7 @@ import { AppBar, Toolbar, IconButton, Badge, Typography, Button, TextField } fro
 import { ShoppingCart } from '@material-ui/icons';
 import logo from '../../../src/favicon.png';
 import useStyles from './styles';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Slide from '@mui/material/Slide';
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Slide, Tooltip} from '@mui/material';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -42,11 +37,13 @@ const Navbar = () => {
           </Typography>
           <div className={classes.grow} />
           <div>
-            <IconButton aria-label="Show cart items" color="inherit" className={classes.button}>
-                <Badge badgeContent={'0'} color="secondary">
-                    <ShoppingCart />
-                </Badge>
-            </IconButton>
+            <Tooltip title="Your shopping cart">
+                <IconButton aria-label="Show cart items" color="inherit" className={classes.button}>
+                    <Badge badgeContent={'0'} color="secondary">
+                        <ShoppingCart />
+                    </Badge>
+                </IconButton>
+            </Tooltip>
             {!isLoggedIn && (
             <Button variant="contained" color="primary" onClick={handleClickOpen}>LogIn</Button>
             )}
